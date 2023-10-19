@@ -19,7 +19,9 @@
 ```
 FROM node【「:」の後にバージョンを追記】
 WORKDIR /projects
+【「RUN npm config set unsafe-perm true」を追記】
 RUN npm install -g @angular/cli【「＠」の後にバージョンを追記】
+【「RUN apk add bash」を追記】
 EXPOSE 4200
 ```
 
@@ -27,7 +29,9 @@ EXPOSE 4200
 ```
 FROM node:8.12.0-alpine
 WORKDIR /projects
+RUN npm config set unsafe-perm true
 RUN npm install -g @angular/cli@6.2.6
+RUN apk add bash
 EXPOSE 4200
 ```
 
