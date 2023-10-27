@@ -15,15 +15,18 @@
       <div ng-controller="TodoCtrl">
           <div class="bg-info">
               <label>ToDo: <label><input type="text" ng-model="message"><button ng-click="add()">追加</button>
+              <button ng-click="allDonesDelete(todo)">完了済み全削除</button>
           </div>
           <table class="table table-striped">
               <tr>
-                <th>{{remaining()}}/{{todos.length}}</th>
+                <th>index</th>
+                <th>{{remaining()}}/{{todos.length}}<button ng-click="complate();">すべて完了</button></th>
                 <th>ToDo: フィルター<input type="text" ng-model="q"></th>
                 <th>更新日時</th>
                 <th>削除</th>
               </tr>
               <tr ng-repeat="todo in todos | filter:q">
+                  <td><span>{{todo.id}}</td>
                   <td><input type="checkbox" ng-model="todo.done"></td>
                   <td><span class="done-{{todo.done}}" ng-click="update(todo);">{{todo.message}}</span></td>
                   <td><span>{{todo.date}}</td>

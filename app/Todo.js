@@ -44,6 +44,12 @@ TodoApp.controller('TodoCtrl', ['$scope', function ($scope) {
         return count;
     }
 
+    $scope.complate = function() {
+        $scope.todos.forEach(function(todo) {
+            todo.done = true;
+        });
+    }
+
     $scope.getDate = function() {
         var date = new Date();
 
@@ -54,5 +60,13 @@ TodoApp.controller('TodoCtrl', ['$scope', function ($scope) {
                date.getMinutes() + ":" +
                date.getSeconds()
     }
+
+    $scope.allDonesDelete = function() {
+        for (var i = 0; $scope.todos.length; i++) {
+            if($scope.todos[i].done){
+                $scope.todos.splice(i,1);
+            }
+        }
+    };
     
 }]);
