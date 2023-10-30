@@ -62,11 +62,10 @@ TodoApp.controller('TodoCtrl', ['$scope', function ($scope) {
     }
 
     $scope.allDonesDelete = function() {
-        for (var i = 0; $scope.todos.length; i++) {
-            if($scope.todos[i].done){
-                $scope.todos.splice(i,1);
-            }
-        }
+      // チェックがついているToDoを削除
+      $scope.todos = $scope.todos.filter(function (todo) {
+        return !todo.done;
+      });
     };
     
 }]);
